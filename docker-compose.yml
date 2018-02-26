@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  web:
+    image: nginx
+    container_name: "ideacafe-web"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/src
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    build: ./php
+    container_name: "ideacafe-php"
+    volumes:
+      - ./src:/src
+
+  postgres:
+    restart: always
+    image: postgres:alpine
+    container_name: "ideacafe-postgres"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 15432:5432
