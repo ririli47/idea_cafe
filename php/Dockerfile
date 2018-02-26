@@ -19,6 +19,8 @@ ENV PATH $PATH:/composer/vendor/bin
 
 RUN composer global require "laravel/installer"
 
+RUN apt-get update && apt-get install -my wget gnupg
+
 RUN apt-get update \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_mysql pdo_pgsql
