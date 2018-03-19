@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'HOGE'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        IdeasCafe\Providers\AppServiceProvider::class,
+        IdeasCafe\Providers\AuthServiceProvider::class,
+        // IdeasCafe\Providers\BroadcastServiceProvider::class,
+        IdeasCafe\Providers\EventServiceProvider::class,
+        IdeasCafe\Providers\RouteServiceProvider::class,
 
     ],
 
