@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'IdeaController@index');
+Route::get('/idea/add', 'IdeaController@add');
+Route::post('/idea/add', 'IdeaController@create');
+
 
 Auth::routes();
 
