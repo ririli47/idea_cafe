@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'HOGE'),
+    'name' => env('APP_NAME', 'Ideas Cafe'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,6 +154,7 @@ return [
         /*
          * Application Service Providers...
          */
+         Barryvdh\Debugbar\ServiceProvider::class,
         IdeasCafe\Providers\AppServiceProvider::class,
         IdeasCafe\Providers\AuthServiceProvider::class,
         // IdeasCafe\Providers\BroadcastServiceProvider::class,
@@ -186,6 +187,7 @@ return [
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,

@@ -1,0 +1,12 @@
+.idea_form {
+  margin: 0 auto;
+}
+
+.btn-default#idea_submit{
+  float: right;
+  margin-bottom: 10px;
+}
+
+.card{
+  margin-bottom: 10px;
+}
