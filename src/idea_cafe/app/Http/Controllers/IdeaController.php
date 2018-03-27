@@ -21,14 +21,31 @@ class IdeaController extends Controller
         {
             if(strlen($idea->idea) > 10)
             {
-                $ideas[] = mb_substr($idea->idea, 0, 10) . "...";
+                $ideas[] = [
+                    'id' => $idea->id,
+                    'user_id' => $idea->user_id,
+                    'idea' => $idea->idea = mb_substr($idea->idea, 0, 10) . "...",
+                ];
             }
             else
             {
-                $ideas[] = $idea->idea;
+                $ideas[] = [
+                    'id' => $idea->id,
+                    'user_id' => $idea->user_id,
+                    'idea' => $idea->idea,
+                ];
             }
+
         }
+
         return view('idea.index', ['ideas' => $ideas, 'user' => $user]);
+    }
+
+    function show($id='')
+    {
+        $idea = Idea::where('id', $id)->first();
+
+        return view('idea.show', ['idea' => $idea]);
     }
 
     function add(Request $request)

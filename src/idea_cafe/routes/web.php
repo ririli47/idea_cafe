@@ -15,7 +15,7 @@
 Route::get('/', 'IdeaController@index');
 Route::get('/idea/add', 'IdeaController@add');
 Route::post('/idea/add', 'IdeaController@create');
-
+Route::get('/ideas/{id?}', 'IdeaController@show');
 
 Auth::routes();
 
