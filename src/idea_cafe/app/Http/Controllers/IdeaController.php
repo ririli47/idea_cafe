@@ -19,12 +19,12 @@ class IdeaController extends Controller
         $ideas = Array();
         foreach($ideas_temp as $idea)
         {
-            if(strlen($idea->idea) > 10)
+            if(mb_strlen($idea->idea) > 20)
             {
                 $ideas[] = [
                     'id' => $idea->id,
                     'user_id' => $idea->user_id,
-                    'idea' => $idea->idea = mb_substr($idea->idea, 0, 10) . "...",
+                    'idea' => $idea->idea = mb_substr($idea->idea, 0, 20) . "...",
                 ];
             }
             else
@@ -52,10 +52,6 @@ class IdeaController extends Controller
     {
 
         $user = Auth::user();
-        if($user == null)
-        {
-            // return redirect('/register');
-        }
         $idea = Idea::where('id', $id)->first();
 
         return view('idea.edit', ['idea' => $idea, 'user' => $user]);
@@ -64,10 +60,6 @@ class IdeaController extends Controller
     function update(Request $request, $id = '')
     {
         $user = Auth::user();
-        if($user == null)
-        {
-            // return redirect('/');
-        }
 
         $idea = Idea::where('id', $id)->first();
         if($idea->user_id != $user->id)
