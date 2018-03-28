@@ -10,22 +10,22 @@
 <h2>Top</h2>
 
 @if ($user != null)
-<p>{{$user->id}} : {{$user->name}}</p>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="idea_form">
-                <form class="form-horizontal" action="/idea/add" method="POST">
-                    {{csrf_field()}}
-                    <input type="hidden" name="user_id" value="{{$user->id}}"/>
-                    <div class="form-group">
-                        <label for="idea">あなたのアイデアを共有しよう！</label>
-                        <textarea name="idea" class="form-control" rows="3" id="idea" placeholder="Your ideas ..."></textarea>
-                    </div>
-                    <button  type="submit" class="btn btn-default" id="idea_submit">Send</button>
-                </form>
-            </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="idea_form">
+            <form class="form-horizontal" action="/idea/add" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="user_id" value="{{$user->id}}"/>
+                <div class="form-group">
+                    <label for="idea">あなたのアイデアを共有しよう！</label>
+                    <textarea name="idea" class="form-control" rows="3" id="idea" placeholder="Your ideas ..."></textarea>
+                </div>
+                <button  type="submit" class="btn btn-default" id="idea_submit">Send</button>
+            </form>
         </div>
     </div>
+</div>
 @endif
 <div class="row">
 </div>
@@ -36,6 +36,7 @@
         <div class="card-body">
             <p class="card-text">{{$idea['idea']}}</p>
             <a href="/ideas/{{$idea['id']}}" class="btn btn-primary">もっと見る</a>
+            <a href="/ideas/edit/{{$idea['id']}}" class="btn btn-primary">編集</a>
         </div>
     </div>
 </div>

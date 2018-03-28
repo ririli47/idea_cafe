@@ -12,10 +12,12 @@
 */
 
 
-Route::get('/', 'IdeaController@index');
-Route::get('/idea/add', 'IdeaController@add');
+Route::get ('/', 'IdeaController@index');
+Route::get ('/idea/add', 'IdeaController@add');
 Route::post('/idea/add', 'IdeaController@create');
-Route::get('/ideas/{id?}', 'IdeaController@show');
+Route::get ('/ideas/{id?}', 'IdeaController@show');
+Route::get ('/ideas/edit/{id?}', 'IdeaController@edit')->middleware('auth');
+Route::post('/ideas/edit/{id?}', 'IdeaController@update')->middleware('auth');
 
 Auth::routes();
 

@@ -41,11 +41,45 @@ class IdeaController extends Controller
         return view('idea.index', ['ideas' => $ideas, 'user' => $user]);
     }
 
-    function show($id='')
+    function show($id = '')
     {
         $idea = Idea::where('id', $id)->first();
 
         return view('idea.show', ['idea' => $idea]);
+    }
+
+    function edit($id = '')
+    {
+
+        $user = Auth::user();
+        if($user == null)
+        {
+            // return redirect('/register');
+        }
+        $idea = Idea::where('id', $id)->first();
+
+        return view('idea.edit', ['idea' => $idea, 'user' => $user]);
+    }
+
+    function update(Request $request, $id = '')
+    {
+        $user = Auth::user();
+        if($user == null)
+        {
+            // return redirect('/');
+        }
+
+        $idea = Idea::where('id', $id)->first();
+        if($idea->user_id != $user->id)
+        {
+            return redirect('/');
+        }
+
+        $this->validate($request, Idea::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        $idea->fill($form)->save();
+        return redirect('/');
     }
 
     function add(Request $request)
