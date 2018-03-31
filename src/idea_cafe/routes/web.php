@@ -18,6 +18,8 @@ Route::post('/idea/add', 'IdeaController@create');
 Route::get ('/ideas/{id?}', 'IdeaController@show');
 Route::get ('/ideas/edit/{id?}', 'IdeaController@edit')->middleware('auth');
 Route::post('/ideas/edit/{id?}', 'IdeaController@update')->middleware('auth');
+Route::get ('/ideas/delete/{id?}', 'IdeaController@delete')->middleware('auth');
+Route::post('/ideas/delete/{id?}', 'IdeaController@remove')->middleware('auth');
 
 Auth::routes();
 
