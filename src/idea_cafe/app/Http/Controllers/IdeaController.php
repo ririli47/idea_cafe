@@ -49,7 +49,7 @@ class IdeaController extends Controller
     function show(Request $request)
     {
         $idea = Idea::find($request->id);
-
+        $idea->idea = str_replace("\r", "<br>", $idea->idea);
         return view('idea.show', ['idea' => $idea]);
     }
 

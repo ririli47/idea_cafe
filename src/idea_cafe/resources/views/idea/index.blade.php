@@ -7,8 +7,6 @@
 
 @section('content')
 <div class="container">
-<h2>Top</h2>
-
 @if ($user != null)
 
 <div class="row">
