@@ -21,6 +21,8 @@ Route::post('/ideas/edit/{id?}', 'IdeaController@update')->middleware('auth');
 Route::get ('/ideas/delete/{id?}', 'IdeaController@delete')->middleware('auth');
 Route::post('/ideas/delete/{id?}', 'IdeaController@remove')->middleware('auth');
 
+Route::get ('/users/{id?}', 'UserController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

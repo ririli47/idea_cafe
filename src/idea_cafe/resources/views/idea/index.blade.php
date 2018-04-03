@@ -33,7 +33,7 @@
     <div class="card">
         <div class="card-body">
             @if($user != null)
-                <h6 class="card-subtitle mb-2 text-muted">{{$idea['user_name']}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"><a href="/users/{{$idea['user_id']}}">{{$idea['user_name']}}</a></h6>
             @endif
             <p class="card-text">{{$idea['idea']}}</p>
             <a href="/ideas/{{$idea['id']}}" class="btn btn-primary">もっと見る</a>
