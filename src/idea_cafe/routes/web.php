@@ -23,6 +23,9 @@ Route::post('/ideas/delete/{id?}', 'IdeaController@remove')->middleware('auth');
 
 Route::get ('/users/{id?}', 'UserController@index');
 
+Route::post('/like/add', 'LikeController@add_like');
+Route::post('/like/remove', 'LikeController@remove_like');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

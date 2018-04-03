@@ -5,6 +5,7 @@ namespace IdeasCafe\Http\Controllers;
 use Illuminate\Http\Request;
 use IdeasCafe\Idea;
 use IdeasCafe\User;
+use IdeasCafe\Like;
 use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
@@ -21,6 +22,7 @@ class IdeaController extends Controller
         foreach($ideas_temp as $idea)
         {
             $idea_user = User::where('id', $idea->user_id)->first(['name']);
+            $liked = Like::where('like_user_id', $user->id)->where('idea_id', $idea->id)->exists();
 
             if(mb_strlen($idea->idea) > 20)
             {
@@ -28,6 +30,7 @@ class IdeaController extends Controller
                     'id' => $idea->id,
                     'user_id' => $idea->user_id,
                     'user_name' => $idea_user->name,
+                    'liked' => $liked,
                     'idea' => $idea->idea = mb_substr($idea->idea, 0, 20) . "...",
                 ];
             }
@@ -37,6 +40,7 @@ class IdeaController extends Controller
                     'id' => $idea->id,
                     'user_id' => $idea->user_id,
                     'user_name' => $idea_user->name,
+                    'liked' => $liked,
                     'idea' => $idea->idea,
                 ];
             }

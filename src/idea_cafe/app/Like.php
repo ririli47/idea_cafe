@@ -12,4 +12,9 @@ class Like extends Model
         'idea_id' => 'required',
         'like_user_id' => 'required'
     );
+
+    public function getLiked()
+    {
+        
+    }
 }

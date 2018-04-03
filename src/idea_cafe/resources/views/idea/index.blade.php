@@ -32,12 +32,25 @@
 <div class="col-md-4">
     <div class="card">
         <div class="card-body">
-            @if($user != null)
-                <h6 class="card-subtitle mb-2 text-muted"><a href="/users/{{$idea['user_id']}}">{{$idea['user_name']}}</a></h6>
-            @endif
+            <h6 class="card-subtitle mb-2 text-muted"><a href="/users/{{$idea['user_id']}}">{{$idea['user_name']}}</a></h6>
             <p class="card-text">{{$idea['idea']}}</p>
             <a href="/ideas/{{$idea['id']}}" class="btn btn-primary">もっと見る</a>
             @if($user != null)
+            @if($idea['liked'])
+            <form id="like_remove" action="/like/remove" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="like_user_id" value="{{$user->id}}"/>
+                <input type="hidden" name="idea_id" value="{{$idea['id']}}"/>
+                <button  type="submit" class="btn btn-default" id="idea_submit">DisLike</button>
+            </form>
+            @else
+            <form id="like_add" action="/like/add" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="like_user_id" value="{{$user->id}}"/>
+                <input type="hidden" name="idea_id" value="{{$idea['id']}}"/>
+                <button  type="submit" class="btn btn-default" id="idea_submit">Like</button>
+            </form>
+            @endif
                 @if($idea['user_id'] == $user->id)
                 <div class="dropdown" style="float: right;">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -55,5 +68,6 @@
 </div>
 
 </div>
+
 
 @endsection
