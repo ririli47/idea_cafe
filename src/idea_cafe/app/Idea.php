@@ -12,4 +12,9 @@ class Idea extends Model
         'user_id' => 'required',
         'idea' => 'required'
     );
+
+    public function user()
+    {
+        return $this->belongsTo('IdeasCafe\User');
+    }
 }
