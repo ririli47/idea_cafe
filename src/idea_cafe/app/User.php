@@ -28,10 +28,4 @@ class User extends Authenticatable
     ];
 
 
-
-    //hasMany設定
-    public function ideas()
-    {
-        return $this->hasMany('IdeasCafe\Idea');
-    }
 }
