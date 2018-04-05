@@ -22,29 +22,20 @@ class IdeaController extends Controller
         foreach($ideas_temp as $idea)
         {
             $idea_user = User::where('id', $idea->user_id)->first(['name']);
-            $liked = Like::where('like_user_id', $user->id)->where('idea_id', $idea->id)->exists();
 
-            if(mb_strlen($idea->idea) > 20)
+            $liked = 0;
+            if($user != null)
             {
-                $ideas[] = [
-                    'id' => $idea->id,
-                    'user_id' => $idea->user_id,
-                    'user_name' => $idea_user->name,
-                    'liked' => $liked,
-                    'idea' => $idea->idea = mb_substr($idea->idea, 0, 20) . "...",
-                ];
-            }
-            else
-            {
-                $ideas[] = [
-                    'id' => $idea->id,
-                    'user_id' => $idea->user_id,
-                    'user_name' => $idea_user->name,
-                    'liked' => $liked,
-                    'idea' => $idea->idea,
-                ];
+                $liked = Like::where('like_user_id', $user->id)->where('idea_id', $idea->id)->exists();
             }
 
+            $ideas[] = [
+                'id' => $idea->id,
+                'user_id' => $idea->user_id,
+                'user_name' => $idea_user->name,
+                'liked' => $liked,
+                'idea' => $idea->idea,
+            ];
         }
 
         return view('idea.index', ['ideas' => $ideas, 'user' => $user]);
