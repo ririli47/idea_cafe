@@ -10,3 +10,16 @@
 .card{
   margin-bottom: 10px;
 }
+
+.dropdown-toggle#dropdownMenuButton{
+  background-color: #ffffff;
+}
+
+.btn-secondary#dropdownMenuButton{
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/*html, body {
+  background-color: #d7fbf0;
+}*/

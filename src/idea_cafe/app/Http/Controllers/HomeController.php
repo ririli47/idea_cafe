@@ -3,6 +3,9 @@
 namespace IdeasCafe\Http\Controllers;
 
 use Illuminate\Http\Request;
+use IdeasCafe\Idea;
+use IdeasCafe\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $user = Auth::user();
+
+        //$ideas_temp = Idea::orderBy('updated_at', 'DESC')->get();
+
+        $ideas = Idea::with('user')->where('user_id', $user->id)->get();
+
+        return view('home', ['ideas' => $ideas, 'user' => $user]);
     }
 }

@@ -4,17 +4,17 @@ namespace IdeasCafe;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Idea extends Model
+class Like extends Model
 {
     protected $guarded = array('id');
 
     public static $rules = array(
-        'user_id' => 'required',
-        'idea' => 'required'
+        'idea_id' => 'required',
+        'like_user_id' => 'required'
     );
 
-    public function user()
+    public function getLiked()
     {
-        return $this->belongsTo('IdeasCafe\User');
+        
     }
 }
