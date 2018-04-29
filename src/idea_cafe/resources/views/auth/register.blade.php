@@ -8,9 +8,6 @@
                 <div class="card-header">Register</div>
 
                 <div class="card-body">
-                    @if(Session::has('message'))
-                        <div class="alert alert-info">{{Session::get('message')}}</div>
-                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

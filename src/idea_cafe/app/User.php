@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'email_token', 'verified'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -27,13 +27,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-    public function verified()
-    {
-        $this->email_token = null;
-        $this->verified = 1;
-        $this->status = 1;
-        $this->save();
-    }
 
 }
