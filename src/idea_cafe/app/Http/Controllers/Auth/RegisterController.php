@@ -90,8 +90,8 @@ class RegisterController extends Controller
         {
             $user = $this->create($request->all());
 
-            // $email = new EmailVerification(new User(['name' => $user->name, 'email_token' => $user->email_token]));
-            // Mail::to($user->email)->send($email);
+            $email = new EmailVerification(new User(['name' => $user->name, 'email_token' => $user->email_token]));
+            Mail::to($user->email)->send($email);
             DB::commit();
 
             $request->session()->flash('message', '入力したメールアドレス宛に「メールアドレスの登録確認」メールが届くので確認してください！');
