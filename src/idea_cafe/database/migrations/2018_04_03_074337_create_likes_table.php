@@ -13,7 +13,7 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('Likes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idea_id');
             $table->integer('like_user_id');
